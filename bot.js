@@ -20,6 +20,11 @@ const gif = require("gif-search");
 
 const client = new Discord.Client({disableEveryone: true});
 
+
+client.on('ready', () => {
+    console.log('I am ready!');
+});
+
 const prefix = "#";
 /////////////////////////
 ////////////////////////
