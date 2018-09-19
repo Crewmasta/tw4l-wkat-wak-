@@ -25,7 +25,7 @@ client.on('ready', () => {
     console.log('I am ready!');
 });
 
-const prefix = "1";
+const prefix = "E";
 /////////////////////////
 ////////////////////////
 
