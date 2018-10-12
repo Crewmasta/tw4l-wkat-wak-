@@ -41,7 +41,7 @@ let args = message.content.split(" ").slice(1).join(" ");
 if(!args[0]) return message.reply("please enter song name to get the lyrics");
 analyrics.getSong(args, function(song) {
 hastebin(`${song.title} ${song.lyrics}`, "txt").then(r => {
-message.channel.send(`${song.title} **Lyrics in hastebin** : 
+message.channel.send(`${song.title} *If not sended.. lel..* **Lyrics in hastebin** : 
 [ ${r} ]`)
 }).catch(console.error);
 message.channel.send(`Lyrics for the song ${song.title} , For the artist ${song.artist} \n  \`\`\`${song.lyrics}\`\`\` `)
