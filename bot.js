@@ -33,12 +33,10 @@ const prefix = "#";
 /////////////////////////
 ////////////////////////
 
-var analyrics = require("analyrics"); //npm i analyrics
-var hastebin = require('hastebin-gen'); //npm i hastebin-gen
 analyrics.setToken("vQC2IQZ30BSOD664jJz7LKbUEy1It_qkNBWpCYR9WexY_xYhX0Tqzh4Y91dgT8eF");
 
 client.on("message", async message =>{
-if(message.content.startsWith("=lyrics")){
+if(message.content.startsWith("#lyrics")){
 let args = message.content.split(" ").slice(1).join(" ");
 if(!args[0]) return message.reply("please enter song name to get the lyrics");
 analyrics.getSong(args, function(song) {
@@ -46,7 +44,7 @@ hastebin(song.title, "txt").then(r => {
 message.channel.send(`${song.title} **Lyrics in hastebin** : 
 [ ${r} ]`)
 }).catch(console.error);
-let btates = `Lyrics for the song ! ${song.title} \`\`\`${song.lyrics}\`\`\` `
+let btates = `Lyrics for the song ! ${song.title} \n \`\`\`${song.lyrics}\`\`\` `;
 message.channel.send(btates)
 });
     }
