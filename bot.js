@@ -41,19 +41,31 @@ if(message.content.startsWith(`#lyrics`)){
 let args = message.content.split(" ").slice(1).join(" ");
 if(!args[0]) return message.reply("please enter song name to get the lyrics");
 analyrics.getSong(args, function(song) {
-hastebin(song.title, "txt").then(r => {
-message.channel.send(`${song.title} **Lyrics in hastebin** : 
-[ ${r} ]`)
-}).catch(console.error);
-let embed = new Discord.RichEmbed()
-.setAuthor(message.author.tag, message.author.avatarURL)
-.setDescription(`${song.lyrics}`)
-.setFooter(`${song.title}` + " Song Lyrics");
 message.channel.send(`Lyrics for the song! ${song.title} \n \`\`\`${song.lyrics}\`\`\` `)
-});
     }
 })
+});
+	
+	client.on('message', async msg =>{
+	if (msg.author.bot) return undefined;
+    if (!msg.content.startsWith(prefix)) return undefined;
+    
+    let args = msg.content.split(' ');
 
+	let command = msg.content.toLowerCase().split(" ")[0];
+	command = command.slice(prefix.length)
+
+    if(command === `lyrics`) {
+let args = message.content.split(" ").slice(1).join(" ");
+if(!args[0]) return message.reply("please enter song name to get the lyrics");
+analyrics.getSong(args, function(song) {
+message.channel.send(`Lyrics for the song! ${song.title} \n \`\`\`${song.lyrics}\`\`\` `)
+    msg.delete().catch(O_o=>{})
+    msg.channel.send(embed);
+    }
+		  }
+		  })
+});
 
 client.on('message', async msg =>{
 	if (msg.author.bot) return undefined;
