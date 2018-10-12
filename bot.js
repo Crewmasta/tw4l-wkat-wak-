@@ -44,8 +44,7 @@ hastebin(song.title, "txt").then(r => {
 message.channel.send(`${song.title} **Lyrics in hastebin** : 
 [ ${r} ]`)
 }).catch(console.error);
-let btates = `Lyrics for the song ! ${song.title} \n \`\`\`${song.lyrics}\`\`\` `;
-message.channel.send(btates)
+message.channel.send(`Lyrics for the song ${song.title} , For the artist ${song.artist} \n  \`\`\`${song.lyrics}\`\`\` `)
 });
     }
 })
