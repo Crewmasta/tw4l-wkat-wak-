@@ -76,7 +76,7 @@ client.on('message', async msg =>{
 
 
 
-const ms = require('ms'); // npm i ms
+const moment = require('ms'); // npm i ms
 const cool = [];
 client.on('message',async message => {
   if(message.author.bot) return;
