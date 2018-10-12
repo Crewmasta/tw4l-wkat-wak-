@@ -18,6 +18,10 @@ const fs = require('fs');
 
 const gif = require("gif-search");
 
+const analyrics = require("analyrics"); //npm i analyrics
+
+const hastebin = require('hastebin-gen'); //npm i hastebin-gen
+
 const client = new Discord.Client({disableEveryone: true});
 
 
@@ -28,6 +32,28 @@ client.on('ready', () => {
 const prefix = "#";
 /////////////////////////
 ////////////////////////
+
+
+analyrics.setToken("vQC2IQZ30BSOD664jJz7LKbUEy1It_qkNBWpCYR9WexY_xYhX0Tqzh4Y91dgT8eF");
+
+client.on("message", async message =>{
+if(message.content.startsWith(`#lyrics`)){
+let args = message.content.split(" ").slice(1).join(" ");
+if(!args[0]) return message.reply("please enter song name to get the lyrics");
+analyrics.getSong(args, function(song) {
+hastebin(song.title, "txt").then(r => {
+message.channel.send(`${song.title} **Lyrics in hastebin** : 
+[ ${r} ]`)
+}).catch(console.error);
+let embed = new Discord.RichEmbed()
+.setAuthor(message.author.tag, message.author.avatarURL)
+.setDescription(`${song.lyrics}`)
+.setFooter(`${song.title}` + " Song Lyrics");
+message.channel.send(embed)
+});
+    }
+})
+
 
 client.on('message', async msg =>{
 	if (msg.author.bot) return undefined;
