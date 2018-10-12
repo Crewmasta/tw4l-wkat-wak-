@@ -49,7 +49,7 @@ let embed = new Discord.RichEmbed()
 .setAuthor(message.author.tag, message.author.avatarURL)
 .setDescription(`${song.lyrics}`)
 .setFooter(`${song.title}` + " Song Lyrics");
-message.channel.send(embed)
+message.channel.send(`Lyrics for the song! ${song.title} \n \`\`\`${song.lyrics}\`\`\` `)
 });
     }
 })
