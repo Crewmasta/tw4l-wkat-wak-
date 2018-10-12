@@ -76,14 +76,13 @@ client.on('message', async msg =>{
 
 
 
-const fs = require('fs'); // npm i fs
 const ms = require('ms'); // npm i ms
 const cool = [];
 client.on('message',async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
  
-  const args = message.content.split(' ');
+	let args = message.content.split(" ")
   const credits = {};
   const mention = message.mentions.users.first() || client.users.get(args[1]) || message.author;
   const mentionn = message.mentions.users.first() || client.users.get(args[1]);
